@@ -1,0 +1,17 @@
+{
+    "total_return": 0.13185769913321277,
+    "annual_return": 0.9232984578547272,
+    "volatility": 1.1684137475653094,
+    "sharpe_ratio": 0.49111033551484284,
+    "max_drawdown": -0.992228677694197,
+    "daily_mean_arithmetic": 0.002295280270347816,
+    "daily_mean_geometric": -0.00046298581177972586,
+    "daily_min_return": -0.4575751503711859,
+    "max_10day_drawdown": -0.992228677694197,
+    "skewness": 0.1167853370646467,
+    "kurtosis": 4.527930629508037,
+    "modified_var_95": -0.002018456438001401,
+    "cvar_95": -0.16570560404036724,
+    "num_trades": 908,
+    "num_failures": 0
+}
