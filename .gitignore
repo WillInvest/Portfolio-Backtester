@@ -3,5 +3,7 @@ __pycache__/
 .DS_Store
 *.csv
 screenlog*
-backtest_results/        
+exp/backtest_results/     
 exp/screenlog.0
+src/__pycache__/backtester.cpython-39.pyc
+src/__pycache__/optimization.cpython-39.pyc

@@ -19,8 +19,12 @@ class PortfolioOptimizer:
             weights = cp.Variable(num_assets)
             rho_np = rho.to_numpy()
             beta_np = beta.loc[rho.index].to_numpy()
-
-            obj = cp.Maximize(rho_np.T @ weights - risk_aversion * cp.quad_form(weights, cov))
+            
+            # Get Cholesky decomposition of covariance matrix
+            L = np.linalg.cholesky(cov)
+            obj = cp.Maximize(rho_np.T @ weights - risk_aversion * cp.norm(L @ weights))
+            # obj = cp.Maximize(rho_np.T @ weights - risk_aversion * cp.quad_form(weights, cov))
+            
             constraints = [
                 cp.sum(weights) == 1,
                 -2 <= weights,

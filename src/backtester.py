@@ -129,27 +129,19 @@ class PortfolioBacktest:
         ].index
         
         current_weights = None
-        wipe_out = False
         pbar = tqdm(trading_days, desc="Calculating daily returns")
         for date in pbar:
             # Update progress bar description with current date
             pbar.set_description(f"Calculating {date.strftime('%Y-%m-%d')}")
-            if not wipe_out:
-                if date in portfolio_weights:
-                    current_weights = portfolio_weights[date]
-                
-                if current_weights is not None:
-                    daily_return = sum(
-                        weight * self.etf_daily_returns.loc[date, asset]
-                        for asset, weight in current_weights.items()
-                    )
-                    if daily_return < -1:
-                        wipe_out = True
-                    
-                self.results.update(date, returns=daily_return)
-            else:
-                print(f"Portfolio wiped out on {date}")
-                return None
+            if date in portfolio_weights:
+                current_weights = portfolio_weights[date]
+            
+            if current_weights is not None:
+                daily_return = sum(
+                    weight * self.etf_daily_returns.loc[date, asset]
+                    for asset, weight in current_weights.items()
+                )
+            self.results.update(date, returns=daily_return)
 
 
 def run_strategy(config: BacktestConfig) -> BacktestResults:
